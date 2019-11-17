@@ -1,7 +1,14 @@
+package onlineShop;
+
 public class LineItem  {
 
     private int quantity;
     private Product product;
+
+    public LineItem( Product product,int quantity) {
+        this.quantity = quantity;
+        this.product = product;
+    }
 
     public int getQuantity() {
         return quantity;

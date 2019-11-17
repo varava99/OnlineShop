@@ -1,3 +1,5 @@
+package onlineShop;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -21,8 +23,15 @@ public class Order {
             totalSum += items.get(i).subSum();
         }
 
+        return totalSum;
 
     }
+
+    public void addLineItem(Product prodSpec, int quantity){
+        items.add(new LineItem(prodSpec,quantity));
+
+    }
+
 
 
 }

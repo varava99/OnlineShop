@@ -1,3 +1,5 @@
+package onlineShop;
+
 import java.time.LocalDate;
 
 public class Product {
@@ -46,6 +48,14 @@ public class Product {
     }
 
     public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public Product(String id, String name, double price, LocalDate productionDate, LocalDate expirationDate) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.productionDate = productionDate;
         this.expirationDate = expirationDate;
     }
 }

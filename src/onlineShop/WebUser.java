@@ -1,3 +1,5 @@
+package onlineShop;
+
 import java.util.ArrayList;
 
 public class WebUser {
