@@ -8,7 +8,9 @@ public interface List<P> {
     P deleteLast();
     P deleteIndex(int index);
     boolean isEmpty();
-    void displayList();
+    void displayListHeadToTail();
+    void displayListTailToHead();
+
 
 
 

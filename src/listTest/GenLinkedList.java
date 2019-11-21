@@ -8,21 +8,28 @@ public class GenLinkedList<T> implements List<T> {
 
     @Override
     public void insertFirst(T item) {
-
         GenNode<T> newLink = new GenNode<>(item);
-        newLink.setNext(head);
-        head = newLink;
+
+        if (head == null && tail==null) {
+            head = newLink;
+            tail = newLink;
+        }else{
+            newLink.setNext(head);
+            head.setPrevious(newLink);
+            head = newLink;
+        }
+
+
 
     }
 
     @Override
     public void insertLast(T item) {
-        GenNode<T> current = tail;
-        while (current.getNext() != null) {
-            current = current.getNext();
-        }
+
         GenNode<T> newCurrent = new GenNode<>(item);
-        current.setNext(newCurrent);
+        newCurrent.setPrevious(tail);
+        tail.setNext(newCurrent);
+        tail = newCurrent;
 
     }
 
@@ -30,23 +37,21 @@ public class GenLinkedList<T> implements List<T> {
     public T deleteFirst() {
         GenNode<T> temp = head;
         head = head.getNext();
+        head.setPrevious(null);
         temp.setNext(null);
         return temp.getData();
     }
 
     @Override
     public T deleteLast() {
-        GenNode<T> current = head;
-        GenNode<T> prev = head;
+        GenNode<T> temp = tail;
+        tail = tail.getPrevious();
+        tail.setNext(null);
 
-        while (current.getNext() != null) {
-            prev = current;
-            current = current.getNext();
-        }
+        temp.setNext(null);
+        temp.setPrevious(null);
 
-        prev.setNext(null);
-        return current.getData();
-
+        return temp.getData();
     }
 
     @Override
@@ -63,8 +68,7 @@ public class GenLinkedList<T> implements List<T> {
 
         if (current != null) {
             if (current == head) {
-                head = head.getNext();
-                head.setPrevious(null);
+                head = null;
             } else {
                 previous.setNext(current.getNext());
 
@@ -82,7 +86,7 @@ public class GenLinkedList<T> implements List<T> {
     }
 
     @Override
-    public void displayList() {
+    public void displayListHeadToTail() {
         System.out.println("List (head -->  tail) : ");
         GenNode<T> current = head;
         while (current != null) {
@@ -94,5 +98,18 @@ public class GenLinkedList<T> implements List<T> {
 
     }
 
-//todo  praveriti vse methods   pravelinii i nepravelinii
+    @Override
+    public void displayListTailToHead() {
+        System.out.println("List (tail -->  head) : ");
+        GenNode<T> current = tail;
+        while (current != null) {
+            current.displayGenNode();
+            current = current.getPrevious();
+
+        }
+        System.out.println(" ");
+
+    }  /// done
+
+
 }
