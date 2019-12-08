@@ -1,9 +1,11 @@
 package listTest;
 
 public class GenLinkedList<T> implements List<T> {
+
     private T data;
     private GenNode<T> head;
     private GenNode<T> tail;
+
 
 
     @Override
@@ -45,8 +47,12 @@ public class GenLinkedList<T> implements List<T> {
     @Override
     public T deleteLast() {
         GenNode<T> temp = tail;
+        if(tail.getPrevious()==null){
+            tail=null;
+        }else{
         tail = tail.getPrevious();
         tail.setNext(null);
+        }
 
         temp.setNext(null);
         temp.setPrevious(null);
